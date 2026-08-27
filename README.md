@@ -8,6 +8,7 @@ gallery. Three files, copied byte-identically into every example:
 | `launchpad-kit.css` | the whole design system — palette, type, and about thirty classes |
 | `launchpad-kit.js` | tabs, sortable tables, filter boxes, three chart shapes, toasts, one fetch helper |
 | `favicon.svg` | the mark |
+| `vend.sh` | copies all three into every example, and rebuilds the one stylesheet that is the kit plus a layer |
 
 No imports, no CDN, no web fonts, no build step and no dependencies. An
 internal Launchpad install may have no route off the network, and a page whose
@@ -15,11 +16,18 @@ type silently falls back is worse than one that chose its fallback on purpose.
 
 Copies rather than a package, deliberately: an example has to be a repository a
 person can read top to bottom and deploy in one click. A shared dependency
-would make fourteen apps un-runnable the day this one moved.
+would make sixteen apps un-runnable the day this one moved.
+
+The cost of that choice is `vend.sh` and the check under it:
+
+```bash
+./vend.sh                                    # copy into all sixteen
+sha256sum launchpad-kit.css                  # then compare every copy
+```
 
 ## Why every example looks the same
 
-Fourteen apps, six languages, four runtimes. The thing they are demonstrating is
+Sixteen apps, six languages, five runtimes. The thing they are demonstrating is
 **Launchpad**, not each author's taste — so the reader should be able to move
 from the Go one to the R one to the notebook and recognise the page, and spend
 their attention on the twenty lines that differ.
