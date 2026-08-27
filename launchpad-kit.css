@@ -203,6 +203,14 @@ pre code { background: none; padding: 0; }
 
 .masthead-aside { display: flex; flex-direction: column; align-items: flex-end; gap: .5rem; }
 
+/* Inline code inside the masthead. The page-level rule paints a light pill,
+   which on the dark bar is a white block with white text in it. */
+.masthead code, .rail code {
+  background: rgba(255, 255, 255, .13);
+  color: inherit;
+  border-radius: 4px;
+}
+
 .chip {
   display: inline-flex; align-items: center; gap: .4rem;
   border-radius: 999px; padding: .3rem .7rem;
